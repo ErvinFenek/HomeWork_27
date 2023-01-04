@@ -1,0 +1,63 @@
+/*@font-face {*/
+/*    font-family: "Montserrat-Bold";*/
+/*    src: local("Montserrat-Bold"), local("Montserrat-Bold"), url("fonts/Montserrat-Bold.ttf") format("truetype");*/
+/*    font-weight: 700;*/
+/*    font-style: normal;*/
+/*}*/
+.form {
+    padding: 30px;
+    background: #8d7070;
+}
+.tasksHolderWrapper {
+    background: rgba(75, 97, 92, 0.44);
+    padding: 30px;
+}
+.tasksHolder{
+    height: 50px;
+    display: flex;
+}
+.taskText{
+    font-family: Montserrat-Bold;
+    font-size: 16px;
+}
+.taskTextDone {
+    text-decoration: line-through;
+    color: #4e4d4d;
+}
+.btnDone {
+    border: solid 2px black;
+    margin-left: 20px;
+    background: #416c63;
+    width: 50px;
+    height: 24px;
+}
+.btnDone:hover {
+    cursor: pointer;
+}
+.btnDel {
+    border: solid 2px black;
+    margin-left: 5px;
+    background-color: #843434;
+    width: 50px;
+    height: 24px;
+}
+.btnDel:hover {
+    cursor: pointer;
+}
+.task {
+    padding: 4px 8px;
+    border: solid 2px dimgrey;
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    position: relative;
+}
+.done {
+    background: #416c63;
+}
+.task:last-of-type {
+    border-bottom: solid 2px dimgrey;
+}
+
