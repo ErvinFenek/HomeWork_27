@@ -54,6 +54,11 @@
     width: 50%;
     position: relative;
 }
+.taskInput {
+    width: 350px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
 .done {
     background: #416c63;
 }

@@ -8,7 +8,12 @@ export class ToDoList extends React.Component {
                     <p className="taskText">{this.props.task}</p>
                     <div>
                         <button className="btnDel">Delete</button>
-                        <button className="btnDone">Done</button>
+                        <input
+                            type="checkbox"
+                            checked={this.props.isDone}
+                            onChange={() => this.props.onStatusChange(this.props.id) }
+                            className="btnDone">
+                        </input>
                     </div>
                 </li>
         );
