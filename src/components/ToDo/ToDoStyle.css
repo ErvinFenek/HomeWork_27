@@ -44,6 +44,16 @@
 .btnDel:hover {
     cursor: pointer;
 }
+.btnEdit {
+    border: solid 2px black;
+    margin-left: 5px;
+    background-color: #c96d10;
+    width: 50px;
+    height: 24px;
+}
+.btnEdit:hover {
+    cursor: pointer;
+}
 .task {
     padding: 4px 8px;
     border: solid 2px dimgrey;

@@ -22,6 +22,8 @@ const SELECT_OPTIONS = [
         value: IN_PROGRESS,
     }
 ];
+// const taskToEdit = "";
+// const formInput = document.forms.
 
 export class ToDoCreateTask extends React.Component {
     constructor(props) {
@@ -54,6 +56,16 @@ export class ToDoCreateTask extends React.Component {
                 },
             ],
         }));
+        console.log(this.state.tasks);
+    }
+    // onEditHandler = (e) => {
+    //     e.preventDefault();
+    // }
+    onRemoveChild = task => {
+        // console.log(this.props);
+        this.setState(prev =>({
+            tasks: prev.tasks.filter(prevTask => prevTask.id !== task.id)
+        }));
     }
     onStatusChangeHandler = (taskId) => {
         this.setState((prev) => ({
@@ -69,6 +81,7 @@ export class ToDoCreateTask extends React.Component {
                 }
             }),
         }));
+        console.log(this.state.tasks);
     }
     onSelectChangeHandler = (e) => {
         this.setState((prev) =>({
@@ -112,7 +125,8 @@ export class ToDoCreateTask extends React.Component {
                                 task = { task }
                                 index = { index }
                                 isUnDone = { isUnDone }
-                                onStatusChange = {this.onStatusChangeHandler()}
+                                onStatusChange = {this.onStatusChangeHandler}
+                                remove = { this.onRemoveChild }
                             />
                         ))
                     }
