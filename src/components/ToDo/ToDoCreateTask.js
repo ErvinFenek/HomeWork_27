@@ -61,10 +61,12 @@ export class ToDoCreateTask extends React.Component {
     // onEditHandler = (e) => {
     //     e.preventDefault();
     // }
-    onRemoveChild = task => {
-        // console.log(this.props);
+    onRemoveChild = (task) => {
         this.setState(prev =>({
-            tasks: prev.tasks.filter(prevTask => prevTask.id !== task.id)
+            // tasks: prev.tasks.filter(prevTask => prevTask.id !== task.id)
+            tasks: prev.tasks.filter(function (task) {
+                return task.id !== task.id;
+            }),
         }));
     }
     onStatusChangeHandler = (taskId) => {
