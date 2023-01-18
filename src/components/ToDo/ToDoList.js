@@ -8,8 +8,7 @@ export class ToDoList extends React.Component {
                     <p className="taskText">{this.props.task}</p>
                     <div>
                         <button className="btnDel" onClick={() => this.props.remove(this.props.id) }>Delete</button>
-
-                        <button className="btnEdit" >Edit</button>
+                        <button className="btnEdit" onClick={() => this.props.edit(this.props.id) }>Edit</button>
                         <input
                             type="checkbox"
                             checked={this.props.isDone}

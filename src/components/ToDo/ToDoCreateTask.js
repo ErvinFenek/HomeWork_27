@@ -4,7 +4,6 @@ import {ToDoList} from "./ToDoList";
 import "./ToDoStyle.css";
 import {Select} from "../Select/Select";
 
-
 const ALL_TASKS = "0";
 const DONE = "1";
 const IN_PROGRESS = "2";
@@ -22,8 +21,6 @@ const SELECT_OPTIONS = [
         value: IN_PROGRESS,
     }
 ];
-// const taskToEdit = "";
-// const formInput = document.forms.
 
 export class ToDoCreateTask extends React.Component {
     constructor(props) {
@@ -31,6 +28,7 @@ export class ToDoCreateTask extends React.Component {
         this.state = {
             tasks: [],
             task: "",
+            taskToEdit: {},
             tasksTypeToShow: ALL_TASKS,
         }
     }
@@ -56,14 +54,21 @@ export class ToDoCreateTask extends React.Component {
                 },
             ],
         }));
-        console.log(this.state.tasks);
     }
-    // onEditHandler = (e) => {
-    //     e.preventDefault();
-    // }
+    onEditHandler = (taskId) => {
+        this.setState(prev => ({
+            taskToEdit: prev.tasks.filter(function (task) {
+                return task.id === taskId ;
+            })
+        }))
+        console.log(this.state.taskToEdit[0].task);
+        this.setState({
+            task: this.state.taskToEdit[0].task
+
+        })
+    }
     onRemoveChild = (taskId) => {
         this.setState(prev =>({
-            // tasks: prev.tasks.filter(prevTask => prevTask.id !== task.id)
             tasks: prev.tasks.filter(function (task) {
                 return taskId !== task.id;
             }),
@@ -129,6 +134,7 @@ export class ToDoCreateTask extends React.Component {
                                 isUnDone = { isUnDone }
                                 onStatusChange = {this.onStatusChangeHandler}
                                 remove = { this.onRemoveChild }
+                                edit = { this.onEditHandler }
                             />
                         ))
                     }
