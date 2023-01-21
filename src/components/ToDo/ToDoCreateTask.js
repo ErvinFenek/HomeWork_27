@@ -30,6 +30,7 @@ export class ToDoCreateTask extends React.Component {
             task: "",
             taskToEdit: {},
             tasksTypeToShow: ALL_TASKS,
+            editingTaskId: "",
         }
     }
 
@@ -42,30 +43,34 @@ export class ToDoCreateTask extends React.Component {
 
     onSubmitHandler = (e) => {
         e.preventDefault();
-        if (this.state.task)
-        this.setState(prev => ({
-            task: "",
-            tasks: [...prev.tasks,
-                {
-                    task: this.state.task,
-                    id: v4(),
-                    isUnDone: false,
+        if (this.state.task || this.state.editingTaskId === "") {
+            this.setState((prev => ({
+                task: "",
+                tasks: [...prev.tasks,
+                    {
+                        task:this.state.task,
+                        id: v4(),
+                        isUndone: false,
+                    },
+                ],
+            })))
+        } else if (this.state.task || this.state.editingTaskId !== "") {
+            let neededTask = this.state.tasks.find((task) => task.id === this.state.editingTaskId);
+                neededTask.task = this.state.task;
+        }
 
-                },
-            ],
-        }));
     }
     onEditHandler = (taskId) => {
+        const neededTask = this.state.tasks.find((task) => task.id === taskId);
         this.setState(prev => ({
-            taskToEdit: prev.tasks.filter(function (task) {
-                return task.id === taskId ;
-            })
+            taskToEdit: neededTask,
         }))
-        console.log(this.state.taskToEdit[0].task);
         this.setState({
-            task: this.state.taskToEdit[0].task
+            task: neededTask.task,
+            editingTaskId: neededTask.id,
 
         })
+
     }
     onRemoveChild = (taskId) => {
         this.setState(prev =>({
