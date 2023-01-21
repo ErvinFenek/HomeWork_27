@@ -44,6 +44,7 @@ export class ToDoCreateTask extends React.Component {
     onSubmitHandler = (e) => {
         e.preventDefault();
         if (this.state.task || this.state.editingTaskId === "") {
+            let idToDelete = this.state.editingTaskId;
             this.setState((prev => ({
                 task: "",
                 tasks: [...prev.tasks,
@@ -54,9 +55,11 @@ export class ToDoCreateTask extends React.Component {
                     },
                 ],
             })))
-        } else if (this.state.task || this.state.editingTaskId !== "") {
-            let neededTask = this.state.tasks.find((task) => task.id === this.state.editingTaskId);
-                neededTask.task = this.state.task;
+            this.setState((prev) =>({
+                tasks: prev.tasks.filter(function (task) {
+                    return idToDelete !== task.id;
+                }),
+            }));
         }
 
     }
